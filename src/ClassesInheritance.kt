@@ -2,6 +2,12 @@
 /*All classes in Kotlin have a common superclass Any, that is the default superclass for a class with no supertypes declared:*/
 /*Note: Any is not java.lang.Object; in particular, it does not have any members other than equals(), hashCode() and toString()*/
 
+/*Visibility Modifiers
+* If you do not specify any visibility modifier, public is used by default, which means that your declarations will be visible everywhere;
+* If you mark a declaration private, it will only be visible inside the file containing the declaration;
+* If you mark it internal, it is visible everywhere in the same module;
+* protected is not available for top-level declarations.
+* */
 fun main() {
     /*All classes in Kotlin have a common superclass Any, that is the default superclass for a class with no supertypes declared
   * Note: Any is not java.lang.Object; in particular, it does not have any members other than equals(), hashCode() and toString().
@@ -198,7 +204,7 @@ class C() : A(), B {
 /***********************************************************/
 /*abstract keyword is used to declare abstract classes in Kotlin.
 An abstract class cannot be instantiated (you cannot create objects of an abstract class). However, you can inherit subclasses from can them*/
-/*Abstract classes are always open. You do not need to explicitly use open keyword to inherit subclasses from them.*/
+/*Abstract classes are always open. You do not need to explicitly use open keyword to inherit subclasses from them.By default, the members of an abstract class are non-abstract unless stated otherwise.*/
 //abstract class
 open class Base2 {
     open fun f() {}
