@@ -36,6 +36,23 @@ fun main() {
     val e = C()
     e.f()
 
+    /*object Expression - These are anonymous class instances*/
+    rentPrice(10, 2, 1)
+
+    val atheist = object : ObjectAnonymous() {
+        override fun pray() = println("I don't pray. I am an atheist.")
+    }
+
+    atheist.eat()
+    atheist.talk()
+    atheist.pray()
+
+    DoAuth.takeParams("foo", "qwerty")                          //3
+
+    /*Inner class*/
+    val demo = Outer().Inner().foo()
+
+
 }
 
 /***********************************************************/
@@ -85,6 +102,9 @@ class ConstructorWithArguments constructor(var name: String, var age: Int) {
 
 /***********************************************************/
 //inheritance - Class with primary constructor and arguments
+/*By default, classes in Kotlin are final. If you are familiar with Java,
+ you know that a final class cannot be subclassed.
+ By using the open annotation on a class, compiler allows you to derive new classes from it.*/
 open class Person(age: Int, name: String) {
 
     init {
@@ -222,4 +242,52 @@ class Derived3 : Derived2() {
 }
 
 
+/**************************************************************/
+/*Classes and objects in Kotlin work the same way as in most object-oriented languages: a class is a blueprint, and an object is an instance of a class. */
+fun rentPrice(standardDays: Int, festivityDays: Int, specialDays: Int): Unit {  //1
 
+    val dayRates = object {                                                     //2
+        var standard: Int = 30 * standardDays
+        var festivity: Int = 50 * festivityDays
+        var special: Int = 100 * specialDays
+    }
+
+    val total = dayRates.standard + dayRates.festivity + dayRates.special       //3
+
+    print("Total price: $$total")                                               //4
+
+}
+
+
+object DoAuth {                                                 //1
+    fun takeParams(username: String, password: String) {         //2
+        println("input Auth parameters = $username:$password")
+    }
+}
+
+
+/*******************************Inner class****************************/
+/*A class may be marked as inner to be able to access members of outer class. Inner classes carry a reference to an object of an outer class*/
+
+class Outer {
+    private val bar: Int = 1
+
+    inner class Inner {
+        fun foo() = bar
+        fun result() = result
+    }
+
+    /*Companion objects are part of class and may or may not have a name fot themselves*/
+    companion object cmpInstance{
+        var result: String = "Pass"
+    }
+}
+
+
+open class ObjectAnonymous() {
+    fun eat() = println("Eating food.")
+
+    fun talk() = println("Talking with people.")
+
+    open fun pray() = println("Praying god.")
+}

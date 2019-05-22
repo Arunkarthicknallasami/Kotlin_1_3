@@ -31,6 +31,11 @@ class PersonGenerics<T>(age: T){
     init {
         this.age= age
         println(age)
+        when(age){
+            is Int -> {
+                /*Do actions*/
+            }
+        }
     }
 }
 
