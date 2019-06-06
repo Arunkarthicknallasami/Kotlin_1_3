@@ -39,6 +39,8 @@ fun main() {
     /*object Expression - These are anonymous class instances*/
     rentPrice(10, 2, 1)
 
+    /*Anonymous objects can be used to define an implementation of an interface or an abstract class without
+    creating a reusable implementation*/
     val atheist = object : ObjectAnonymous() {
         override fun pray() = println("I don't pray. I am an atheist.")
     }
@@ -283,11 +285,16 @@ class Outer {
     }
 }
 
-
+//A big difference between anonymous objects in Kotlin and anonymous inner classes in Java is that
+// anonymous objects can implement multiple interfaces and methods.
 open class ObjectAnonymous() {
     fun eat() = println("Eating food.")
 
     fun talk() = println("Talking with people.")
 
     open fun pray() = println("Praying god.")
+}
+
+interface Switcher {
+    fun on(): String
 }
